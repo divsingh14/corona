@@ -1,0 +1,46 @@
+<%- include('includes/head.ejs');%>
+<body>
+    <main>
+        <%- include('includes/navigation.ejs');%>
+        <div class="container">
+            <h4 class="center">All Countries</h4>
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th class="center">Country</th>
+                        <th colspan="4" class="center">Cases</th>
+                        <th colspan="2" class="center">Deaths</th>
+                        <th class="center" >Tests</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th class="center" colspan="1">New</th>
+                        <th class="center" colspan="1">Active</th>
+                        <th class="center" colspan="1">Recovered</th>
+                        <th class="center" colspan="1">Total</th>
+                        <th class="center" colspan="1">New</th>
+                        <th class="center" colspan="1">Total</th>
+                        <th ></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        for(let i of countryList){
+                        %>
+                            <tr>
+                                <td class="center"><%=i.country%></td>
+                                <td class="center" colspan="1"><%=(i.cases.new)?i.cases.new : "No Data"%></td>
+                                <td class="center" colspan="1"><%=(i.cases.active)?i.cases.active:"No Data"%></td>
+                                <td class="center green" colspan="1" ><%=(i.cases.recovered)?i.cases.recovered:"No Data"%></td>
+                                <td class="center" colspan="1"><%=(i.cases.total)?i.cases.total:"No Data"%></td>
+                                <td class="center red" colspan="1" ><%=(i.deaths.new)?i.deaths.new:"No Data"%></td>
+                                <td class="center red" colspan="1" ><%=(i.deaths.total)?i.deaths.total:"No Data"%></td>
+                                <td class="center" ><%=(i.tests.total)?i.tests.total:'No Data'%></td>
+                            </tr>
+                        <%
+                        }
+                    %>
+                </tbody>
+            </table>
+        </div>
+<%- include('includes/footer.ejs');%>

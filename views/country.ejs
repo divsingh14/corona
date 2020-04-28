@@ -1,0 +1,31 @@
+<%- include('includes/head.ejs');%>
+<body>
+    <main>
+        <%- include('includes/navigation.ejs');%>
+        <div class="container">
+            <h4 class="center">Choose Country</h4>
+            <form method="POST" action="/getDetails">
+                <div class="input-field col s12">
+                    <select name="country">
+                        <option value="" disabled selected>Choose your option</option>
+                        <%
+                            for(let i of countryNames){
+                        %>
+                                <option value="<%=i%>"><%=i%></option>    
+                            <%
+                            }
+                        %>
+                    </select>
+                </div>
+                <button class="waves-effect waves-light btn right" type="submit">Submit</button>
+            </form>
+        </div>
+<%- include('includes/footer.ejs');%>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+  });
+
+</script>
